@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我和创行的故事</title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #f7f7f7;
+            color: #666;
+        }
+    </style>        
+</head>
+
+<body>
+    </br>
+    <div style="display:none"><img src="{% static "images/logo-wb.jpg" %}"></div>
+    <div class="container-fluid">
+        <img src="{% static "images/logo.png" %}" class="img-responsive">
+    </div>
+    </br>
+    <div class="container center-block" >
+        <h2><strong>&emsp;&emsp; {{  name  }}</strong>{{  story  }}</h2>
+    </div>
+    <div class="container-fluid" data-spy="affix" data-offset-bottom="100">
+        <p class="text-center"><small>-2017创行中国华东地区大学生领导力发展培训会-</small></p>
+        <p class="text-center"><small>当你与创行相遇之时，故事才真正开始</small></p> 
+    </div>
+</body>
+
+</html>
+
