@@ -60,10 +60,6 @@
 </head>
 
 <body>
-<div class="container-fluid" data-spy="affix" data-offset-bottom="30">
-    <p class="text-center"><small>当你与创行相遇之时，故事才真正开始</small></p> 
-</div>
-
 <div class="container-fluid" >    
     <div class="container-fluid" style="position: relative;padding-left:0px;padding-right:0px;">
         <div class="row" style="margin:0px">
@@ -126,6 +122,17 @@
                 </script>
         </div>
     </div>
+</div>
+
+<div class="container-fluid center-block" style="font-family:Huakang girl;position:absolute;left:10px;right:10px;top:150px;padding-left:5px;padding-right:5px;border-style:double;border-width:5px;border-color:rgb(231,160,81);">
+    <h1><strong>{{  name  }}:</strong></br>&emsp;&emsp;{{  story  }}</h>
+    <div class="col-xs-6 col-xs-offset-6" style="padding:0px">
+            <img src="{% static "images/logo.png" %}" class="img-responsive">
+    </div>
+</div>
+
+<div class="container-fluid" data-spy="affix" data-offset-bottom="30">
+    <p class="text-center"><small>当你与创行相遇之时，故事才真正开始</small></p> 
 </div>
 
 </body>
