@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>我和创行的故事</title>
+    <title>来自创行的情书</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
     <script type="text/javascript">
-       $youziku.load("body", "cabc3e5b3fb54c17bd2449be6ac9f846", "SansGBW3");
-       /*$youziku.load("#id1,.class1,h1", "cabc3e5b3fb54c17bd2449be6ac9f846", "SansGBW3");*/
+       $youziku.load("body", "3859c356b2ca4d09ab84147bd603c7ce", "cyjianxk");
+       /*$youziku.load("#id1,.class1,h1", "3859c356b2ca4d09ab84147bd603c7ce", "cyjianxk");*/
        /*．．．*/
        $youziku.draw();
     </script>
@@ -24,7 +24,8 @@
     </style>        
 </head>
 
-<body>   
+<body>
+           
     <div class="container-fluid" style="position: relative;padding-left:0px;padding-right:0px;">
         <div class="row" style="margin:0px">
             <div class="col-xs-6" style="position: absolute; z-index:90;opacity:0.75;padding:0px">
@@ -76,27 +77,42 @@
             </div>
         </div>
         <div class="col-xs-12" style="position: absolute; z-index:666;opacity:0.75;padding:0px">
-                <canvas id="myCanvas" width="1000" height="50" style="width:100%;height:100%;">您的浏览器不支持 HTML5 canvas 标签。</canvas>
+                <canvas id="myCanvas" width="1000" height="100" style="width:100%;height:100%;">您的浏览器不支持 HTML5 canvas 标签。</canvas>
                 <script>
                 var c=document.getElementById("myCanvas");
                 var ctx=c.getContext("2d");
-                ctx.font="40px Arial";
+                ctx.font="50px cyjianxk";
                 ctx.fillStyle = "rgb(255, 255, 255)";
-                ctx.fillText("-2017创行中国苏皖大区大学生秋季领导力培训会-",60,40);
+                ctx.fillText("-2017南邮创行-",325,50);
                 </script>
         </div>
     </div>
 
 <div class="container-fluid center-block" style="position:absolute;left:10px;right:10px;top:150px;padding-left:10px;padding-right:7px;border-style:double;border-width:5px;border-color:rgb(231,160,81);">
     <h1><strong>{{  name  }}:</strong></h1>
-    <h2>&emsp;&emsp;{{  story  }}</h2>
+    <h2 style="display: inline;">&emsp;&emsp;</h2>
+    <script>
+        var story = {{ story|safe }};
+        var i = 0,j = 1;
+        for(var key in story){
+            i++;
+        }
+        for(;j<=i;j++){
+            if(j%2==1){
+                document.write("<p style='display:inline;font-size:30px;'>" + story[j] + "</p>");
+            }else{
+                document.write("<p style='display:inline;font-size:40px;'>" + story[j] + "</p>");
+            }
+        }
+    </script>    
+
     <div class="col-xs-6 col-xs-offset-6" style="padding:0px">
             <img src="{% static "images/logo.png" %}" class="img-responsive">
     </div>
 </div>
 
-<div class="container-fluid" data-spy="affix" data-offset-bottom="30">
-    <p class="text-center"><small>当你与创行相遇之时，故事才真正开始</small></p> 
+<div class="container-fluid" data-spy="affix" data-offset-bottom="10">
+        <p class="text-center"><small>当你与创行相遇之时，故事才真正开始</small></p> 
 </div>
 
 </body>
