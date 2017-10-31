@@ -118,7 +118,7 @@
             </div>
         </div>
     
-        <br><button id="button1" type="button" class="btn btn-success btn-lg btn-block" onclick="Click()">点击生成，长按保存</button></br>
+        <br><button id="button1" type="button" class="btn btn-success btn-lg btn-block" onclick="Click()">点击生成</button></br>
     
         <div class="container-fluid" data-spy="affix" data-offset-top="1000">
             <div class="col-xs-4 col-xs-offset-4" style="padding:0px">
@@ -179,7 +179,7 @@
             allowTaint:true,
             onrendered:function(canvas) {
                 var image = canvas.toDataURL('image/jpg');
-                pHtml = "<img src='"+image+"' style='width:100%;height:100%'>";  
+                pHtml = "<img src='"+image+"' style='width:100%;height:auto'><p>长按保存图片</p>";  
             },   
         }); 
     
@@ -193,7 +193,7 @@
 
     function Click(){
         jQuery("body").html(pHtml);  
-        jQuery("body").attr("style","padding-top:40px");
+        jQuery("body").attr("style","padding-top:100px");
     }
 </script>
 
