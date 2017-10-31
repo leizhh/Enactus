@@ -1,28 +1,84 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+{% load staticfiles %}
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+      <meta charset="utf-8"> 
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>来自创行的情书</title>
+      <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+      <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdn.bootcss.com/popper.js/1.12.5/esm/popper.min.js"></script>
+      <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+      <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+      <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+      <script type="text/javascript">
+         $youziku.load("body", "3859c356b2ca4d09ab84147bd603c7ce", "cyjianxk");
+         /*$youziku.load("#id1,.class1,h1", "3859c356b2ca4d09ab84147bd603c7ce", "cyjianxk");*/
+         /*．．．*/
+         $youziku.draw();
+      </script>
   </head>
+  
   <body>
-    <h1>你好，世界！</h1>
+    <div id="parent" class="container" style="position:fixed,top:0px;left:0px">
+      <div id="view" style="position:relative;z-index:0; width:1080px; height:1080px;padding:0;margin:0;background:url({% static "images/background.jpg" %});background-size:cover;border-style:double;border-width:5px;border-color:rgb(231,160,81);">
+        <a style="display:block;width:1080px;height:1080px;" onclick="Click()">
+        <div style="padding:0;margin:0;">
+            <img src="{% static "images/logo.png" %}" width="400">
+        </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+        <div class="container-fluid center-block">
+            <h1><strong>{{  name  }}:</strong></h1>
+            <h2 style="display: inline;">&emsp;&emsp;</h2>
+            <script>
+                var story = {{ story|safe }};
+                var i = 0,j = 1;
+                for(var key in story){
+                    i++;
+                }
+                for(;j<=i;j++){
+                    if(j%2==1){
+                        document.write("<p style='display:inline;font-size:30px;'>" + story[j] + "</p>");
+                    }else{
+                        document.write("<p style='display:inline;font-size:40px;'>" + story[j] + "</p>");
+                    }
+                }
+            </script>
+        </div>    
+
+        <div class="col-md-12" style="position:absolute; left:0px; top:1000px; line-height:26px" >
+            <h2 class="text-center">当你与创行相遇之时,故事才真正开始<br>-2017雷镇豪和创行的故事-</h2>
+        </div> 
+
+        <div style="position:absolute; left:820px;top:820px;"> 
+            <img src="{% static "images/二维码.png" %}" class="img-responsive">
+        </a>
+        </div> 
+      </div>
+  </div>
+
+
+
+<button type="button" class="btn btn-success btn-lg btn-block" onclick="Click()">点击生成，长按保存</button></br>
+
+<script>
+    var pHtml;
+    html2canvas(document.getElementById('view'), {
+        allowTaint:true,
+        onrendered:function(canvas) {
+            var image = canvas.toDataURL('image/jpg');
+            pHtml = "<img src='"+image+"' style='width:100%;height:100%'>";  
+        },   
+    }); 
+
+    var parent= document.getElementById("parent");
+    {% comment %} parent.style.display="none"; {% endcomment %}
+
+    function Click(){
+        jQuery("body").html(pHtml);  
+        jQuery("body").attr("style","padding-top:40px");
+    }
+</script>
+
   </body>
 </html>

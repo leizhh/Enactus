@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>来自创行的情书</title>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
     <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
     <script type="text/javascript">
        $youziku.load("body", "3859c356b2ca4d09ab84147bd603c7ce", "cyjianxk");
@@ -25,7 +26,8 @@
 </head>
 
 <body>         
-    <div class="container-fluid" style="position: relative;padding-left:0px;padding-right:0px;">
+<div id="parent" class="container" style="position:fixed,">
+<div class="container-fluid" style="position: relative;z-index=100;padding-left:0px;padding-right:0px;opacity:1;">
         <div class="row" style="margin:0px">
             <div class="col-xs-6" style="position: absolute; z-index:90;opacity:0.75;padding:0px">
                 <canvas id="triangle-left" height="100" width="140" style="width:100%;height:100%;">您的浏览器不支持 HTML5 canvas 标签。</canvas>
@@ -86,13 +88,57 @@
                 </script>
         </div>
     </div>
- 
+</div>    
+    
+    <div class="container-fluid center-block" style="position:absolute;z-index=200;opacity:1;padding:0px;left:10px;right:10px;top:135px;">
+        <div class="row" style="margin:0px;border-style:double;border-width:5px;border-color:rgb(231,160,81);">
+            <div class="container-fluid center-block">
+                <h1><strong>{{  name  }}:</strong></h1>
+                <h2 style="display: inline;">&emsp;&emsp;</h2>
+                <script>
+                    var story = {{ story|safe }};
+                    var i = 0,j = 1;
+                    for(var key in story){
+                        i++;
+                    }
+                    for(;j<=i;j++){
+                        if(j%2==1){
+                            document.write("<p style='display:inline;font-size:30px;'>" + story[j] + "</p>");
+                        }else{
+                            document.write("<p style='display:inline;font-size:40px;'>" + story[j] + "</p>");
+                        }
+                    }
+                </script>
+            </div>    
+    
+            <div class="row" style="margin:-15px">
+                <div class="col-xs-6 col-xs-offset-6">
+                    <img src="{% static "images/logo.png" %}" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    
+        <br><button type="button" class="btn btn-success btn-lg btn-block" onclick="Click()">点击生成，长按保存</button></br>
+    
+        <div class="container-fluid" data-spy="affix" data-offset-top="1000">
+            <div class="col-xs-4 col-xs-offset-4" style="padding:0px">
+                    <img src="{% static "images/二维码.png" %}" class="img-responsive">
+            </div> 
+            <div class="col-xs-8 col-xs-offset-2" style="padding:0px" >
+                <p class="text-center"><small>当你与创行相遇之时<br>故事才真正开始</small></p>
+            </div>
+        </div> 
+        
+    </div>
 
-<div class="container-fluid center-block" style="padding:0px;position:absolute;left:10px;right:10px;top:135px;">
-    <div class="row" style="margin:0px;border-style:double;border-width:5px;border-color:rgb(231,160,81);">
-        <div class="container-fluid center-block">
-            <h1><strong>{{  name  }}:</strong></h1>
-            <h2 style="display: inline;">&emsp;&emsp;</h2>
+    <div id="view" style="position:relative;z-index:0; width:1080px; height:1080px;padding:0;margin:0;background:url({% static "images/background.jpg" %});background-size:cover;border-style:double;border-width:5px;border-color:rgb(231,160,81);">
+        <div style="padding:0;margin:0;">
+            <img src="{% static "images/logo.png" %}" width="400">
+        </div>
+
+        <div style="position:relative;z-index:0; width:900px; height:800px;left:90px;top:50px">
+            <p style="font-size:80px;"><strong>{{  name  }}:</strong></p>
+            <p style="display: inline;font-size:55px;">&emsp;&emsp;</p>
             <script>
                 var story = {{ story|safe }};
                 var i = 0,j = 1;
@@ -101,36 +147,51 @@
                 }
                 for(;j<=i;j++){
                     if(j%2==1){
-                        document.write("<p style='display:inline;font-size:30px;'>" + story[j] + "</p>");
+                        document.write("<p style='display:inline;font-size:55px;'>" + story[j] + "</p>");
                     }else{
-                        document.write("<p style='display:inline;font-size:40px;'>" + story[j] + "</p>");
+                        document.write("<p style='display:inline;font-size:75px;'>" + story[j] + "</p>");
                     }
                 }
             </script>
         </div>    
 
-        <div class="row" style="margin:-15px">
-            <div class="col-xs-6 col-xs-offset-6">
-                <img src="{% static "images/logo.png" %}" class="img-responsive">
-            </div>
-        </div>
-    </div>
-
-    <br>
-    <div class="container-fluid" data-spy="affix" data-offset-top="1000">
-        <div class="col-xs-4 col-xs-offset-4" style="padding:0px">
-                <img src="{% static "images/二维码.png" %}" class="img-responsive">
+        <div style="position:absolute; left:275px; top:975px; line-height:26px" >
+            <h2 class="text-center">当你与创行相遇之时,故事才真正开始<br>-2017{{  name  }}和创行的故事-</h2>
         </div> 
-        <div class="col-xs-8 col-xs-offset-2" style="padding:0px" >
-            <p class="text-center"><small>当你与创行相遇之时<br>故事才真正开始</small></p>
-        </div>
-    </div> 
 
-    <br>
-    <!-- <div class="container"> -->
-        
-    <!-- </div> -->
-</div>
+        <div style="position:absolute; left:820px;top:820px;"> 
+            <img src="{% static "images/二维码.png" %}" class="img-responsive">
+        </div> 
+    </div>
+</div>      
+
+<script>
+    var pHtml;
+    var view= document.getElementById("view");
+    view.style.display="none";
+
+    function generate() {
+        var view= document.getElementById("view");
+        view.style.display="";
+        html2canvas(document.getElementById('view'), {
+            allowTaint:true,
+            onrendered:function(canvas) {
+                var image = canvas.toDataURL('image/jpg');
+                pHtml = "<img src='"+image+"' style='width:100%;height:100%'>";  
+            },   
+        }); 
+    
+        var view= document.getElementById("view");
+        view.style.display="none";
+    }
+
+    setTimeout(generate, 1000);
+
+    function Click(){
+        jQuery("body").html(pHtml);  
+        jQuery("body").attr("style","padding-top:40px");
+    }
+</script>
 
 </body>
 </html>
