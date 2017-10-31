@@ -173,13 +173,14 @@
     button1.disabled="disabled";
 
     function generate() {
+        scrollTo(0,0);
         var view= document.getElementById("view");
         view.style.display="";
         html2canvas(document.getElementById('view'), {
             allowTaint:true,
             onrendered:function(canvas) {
                 var image = canvas.toDataURL('image/jpg');
-                pHtml = "<img src='"+image+"' style='width:100%;height:auto'><p>长按保存图片</p>";  
+                pHtml = "<img src='"+image+"' style='width:100%;height:auto'><p style='text-align:center;'>长按图片保存</p>";  
             },   
         }); 
     
@@ -194,7 +195,7 @@
     function Click(){
         jQuery("body").html(pHtml);  
         jQuery("body").attr("style","padding-top:100px");
-    }
+    };
 </script>
 
 </body>
