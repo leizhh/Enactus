@@ -118,7 +118,7 @@
             </div>
         </div>
     
-        <br><button type="button" class="btn btn-success btn-lg btn-block" onclick="Click()">点击生成，长按保存</button></br>
+        <br><button id="button1" type="button" class="btn btn-success btn-lg btn-block" onclick="Click()">点击生成，长按保存</button></br>
     
         <div class="container-fluid" data-spy="affix" data-offset-top="1000">
             <div class="col-xs-4 col-xs-offset-4" style="padding:0px">
@@ -169,6 +169,8 @@
     var pHtml;
     var view= document.getElementById("view");
     view.style.display="none";
+    var view= document.getElementById("button1");
+    button1.disabled="disabled";
 
     function generate() {
         var view= document.getElementById("view");
@@ -183,9 +185,11 @@
     
         var view= document.getElementById("view");
         view.style.display="none";
+        var view= document.getElementById("button1");
+        button1.disabled="";
     }
 
-    setTimeout(generate, 1000);
+    setTimeout(generate, 2000);
 
     function Click(){
         jQuery("body").html(pHtml);  
