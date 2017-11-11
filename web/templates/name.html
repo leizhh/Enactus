@@ -42,7 +42,7 @@
                     if(j%2==0){
                         document.write("<p style='display:inline;line-height:5.7vh;overflow:hidden;font-size:4vh;margin:0;padding:0;'>" + story[j] + "</p>");
                     }else{
-                        document.write("<p style='display:inline;line-height:5.7vh;overflow:hidden;font-size:2.5vh;margin:0;padding:0 0 0 0;'>" + story[j] + "</p>");
+                        document.write("<p style='display:inline;line-height:5.7vh;overflow:hidden;font-size:2.8vh;margin:0;padding:0 0 0 0;'>" + story[j] + "</p>");
                     }
                 }
             </script>
@@ -53,7 +53,7 @@
     </div>
 
     <div class="container" style="padding:0px;width:100%;height:32vh;position:fixed;bottom:0px;background:url({% static "images/底边栏.jpg" %}); background-repeat:repeat;background-size:100% 100%;background-origin:content-box;">
-        <div class="col-xs-4 col-xs-offset-4" style="padding:15px;position:fixed;bottom:3.5vh;">
+        <div class="col-xs-4 col-xs-offset-4" style="padding:5px;position:fixed;bottom:4.5vh;">
             <div>
                 <img src="{% static "images/二维码.png" %}" class="img-responsive">
             </div>    
@@ -88,7 +88,7 @@
                 var image = canvas.toDataURL("image/jpg");  
                 var pHtml = "<img src='"+image+"' style='width:100%;height:100%'>";  
                 jQuery("body").html(pHtml); 
-                var txt=" <div class='col-xs-8 col-xs-offset-2' style='padding:0px;position:fixed;bottom:20vh;' ><p class='text-center'>长按保存到手机</p></div>"; 
+                var txt=" <div class='col-xs-8 col-xs-offset-2' style='padding:0px;position:fixed;bottom:23vh;' ><p class='text-center'>长按保存到手机</p></div>"; 
                 $("body").append(txt);        // 追加新元素 
             }  
             });      
