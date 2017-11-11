@@ -87,7 +87,9 @@
                 onrendered: function (canvas) {  
                 var image = canvas.toDataURL("image/jpg");  
                 var pHtml = "<img src='"+image+"' style='width:100%;height:100%'>";  
-                jQuery("body").html(pHtml);   
+                jQuery("body").html(pHtml); 
+                var txt=" <div class='col-xs-8 col-xs-offset-2' style='padding:0px;position:fixed;bottom:20vh;' ><p class='text-center'>长按保存到手机</p></div>"; 
+                $("body").append(txt);        // 追加新元素 
             }  
             });      
         }
